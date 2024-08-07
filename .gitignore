@@ -98,3 +98,5 @@ ProjectSettings/URPProjectSettings.asset
 ProjectSettings/VersionControlSettings.asset
 ProjectSettings/VFXManager.asset
 ProjectSettings/XRSettings.asset
+Assets/Scenes/TestScene.unity
+Assets/Scenes/TestScene.unity.meta
