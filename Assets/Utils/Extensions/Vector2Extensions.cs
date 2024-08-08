@@ -4,64 +4,43 @@ namespace Utils.Extensions
 {
 	public static class Vector2Extensions
 	{
+		#region Swap
+
+		/// <summary>
+		///     Swaps and returns the x and y values of the original Vector2.
+		/// </summary>
+		public static Vector2 Swap(this Vector2 vector)
+		{
+			return new Vector2(vector.y, vector.x);
+		}
+
+		/// <summary>
+		///     Swaps the x and y values of the original Vector2 and assigns the result to the original Vector2.
+		/// </summary>
+		public static void SwapThis(this ref Vector2 vector)
+		{
+			vector = vector.Swap();
+		}
+
+		#endregion Swap
+
 		#region With
 
 		/// <summary>
-		/// Creates a new Vector2 with the specified x value and the same y value as the original vector.
+		///     Creates and returns a new Vector2 with the specified x and y values or the same values as the original vector if no
+		///     new values are provided.
 		/// </summary>
-		/// <param name="vector">The original Vector2.</param>
-		/// <param name="x">The new x value.</param>
-		/// <returns>A new Vector2 with the specified x value and the same y value as the original vector.</returns>
-		public static Vector2 WithX(this Vector2 vector, float x)
-		{
-			return new Vector2(x, vector.y);
-		}
-		 
-		/// <summary>
-		/// Creates a new Vector2 with the specified y value and the same x value as the original vector.
-		/// </summary>
-		/// <param name="vector">The original Vector2.</param>
-		/// <param name="y">The new y value.</param>
-		/// <returns>A new Vector2 with the specified y value and the same x value as the original vector.</returns>
-		public static Vector2 WithY(this Vector2 vector, float y)
-		{
-			return new Vector2(vector.x, y);
-		}
-		 
-		/// <summary>
-		/// Creates a new Vector2 with the specified x and y values or the same values as the original vector if no new values are provided.
-		/// </summary>
-		/// <param name="vector">The Original Vector2.</param>
-		/// <param name="x">The new x value.</param>
-		/// <param name="y">The new y value.</param>
-		/// <returns>A new Vector2 with the specified x and y values or the same values as the original vector if no new values are provided.</returns>
 		public static Vector2 With(this Vector2 vector, float? x = null, float? y = null)
 		{
 			return new Vector2(x ?? vector.x, y ?? vector.y);
 		}
-		
+
 		/// <summary>
-		/// Sets the x and y values of the original Vector2.
+		///     Sets the x and y values of the original Vector2.
 		/// </summary>
 		public static void Set(this ref Vector2 vector, float? x = null, float? y = null)
 		{
-			vector = new Vector2(x ?? vector.x, y ?? vector.y);
-		}
-
-		/// <summary>
-		/// Assigns the specified x value to the original Vector2.
-		/// </summary>
-		public static void SetX(this ref Vector2 vector, float x)
-		{
-			vector = new Vector2(x, vector.y);
-		}
-		
-		/// <summary>
-		/// Assigns the specified y value to the original Vector2.
-		/// </summary>
-		public static void SetY(this ref Vector2 vector, float y)
-		{
-			vector = new Vector2(vector.x, y);
+			vector = vector.With(x, y);
 		}
 
 		#endregion With
@@ -69,88 +48,199 @@ namespace Utils.Extensions
 		#region Math Operations
 
 		/// <summary>
-		/// Adds the specified x and y values to the original Vector2.
+		///     Adds and returns the specified x and y values to the original Vector2.
 		/// </summary>
-		/// <param name="vector">The original Vector2.</param>
-		/// <param name="x">The x value to add. If null, 0 is used.</param>
-		/// <param name="y">The y value to add. If null, 0 is used.</param>
-		/// <returns>A new Vector2 with the added x and y values.</returns>
 		public static Vector2 Add(this Vector2 vector, float? x = null, float? y = null)
 		{
 			return new Vector2(vector.x + (x ?? 0), vector.y + (y ?? 0));
 		}
-		 
+
 		/// <summary>
-		/// Subtracts the specified x and y values to the original Vector2.
+		///     Adds the specified x and y values to the original Vector2 and assigns the result to the original Vector2.
 		/// </summary>
-		/// <param name="vector">The original Vector2.</param>
-		/// <param name="x">The x value to subtract. If null, 0 is used.</param>
-		/// <param name="y">The y value to subtract. If null, 0 is used.</param>
-		/// <returns>A new Vector2 with the added x and y values.</returns>
+		public static void AddToThis(this ref Vector2 vector, float? x = null, float? y = null)
+		{
+			vector = vector.Add(x, y);
+		}
+
+		/// <summary>
+		///     Subtracts and returns the specified x and y values to the original Vector2.
+		/// </summary>
 		public static Vector2 Subtract(this Vector2 vector, float? x = null, float? y = null)
 		{
 			return new Vector2(vector.x - (x ?? 0), vector.y - (y ?? 0));
 		}
-		 
+
 		/// <summary>
-		/// Multiplies the specified x and y values to the original Vector2.
+		///     Subtracts the specified x and y values to the original Vector2 and assigns the result to the original Vector2.
 		/// </summary>
-		/// <param name="vector">The original Vector2.</param>
-		/// <param name="x">The x value to multiply. If null, 1 is used.</param>
-		/// <param name="y">The y value to multiply. If null, 1 is used.</param>
-		/// <returns>A new Vector2 with the multiplied x and y values.</returns> 
+		public static void SubtractFromThis(this ref Vector2 vector, float? x = null, float? y = null)
+		{
+			vector = vector.Subtract(x, y);
+		}
+
+		/// <summary>
+		///     Multiplies and returns the specified x and y values to the original Vector2.
+		/// </summary>
 		public static Vector2 Multiply(this Vector2 vector, float? x = null, float? y = null)
 		{
 			return new Vector2(vector.x * (x ?? 1), vector.y * (y ?? 1));
 		}
-		 
+
 		/// <summary>
-		/// Divides the specified x and y values to the original Vector2.
+		///     Multiplies the specified x and y values to the original Vector2 and assigns the result to the original Vector2.
 		/// </summary>
-		/// <param name="vector">The original Vector2.</param>
-		/// <param name="x">The x value to divide. If null, 1 is used.</param>
-		/// <param name="y">The y value to divide. If null, 1 is used.</param>
-		/// <returns>A new Vector2 with the divided x and y values.</returns>
+		public static void MultiplyThisBy(this ref Vector2 vector, float? x = null, float? y = null)
+		{
+			vector = vector.Multiply(x, y);
+		}
+
+		/// <summary>
+		///     Divides and returns the specified x and y values to the original Vector2.
+		/// </summary>
 		public static Vector2 Divide(this Vector2 vector, float? x = null, float? y = null)
 		{
 			return new Vector2(vector.x / (x ?? 1), vector.y / (y ?? 1));
 		}
-		 
-
-		#endregion Math Operations
-
-		#region Swap
 
 		/// <summary>
-		/// Converts the vector 2 to a vector 3 with a z value of 0.
+		///     Divides the specified x and y values to the original Vector2 and assigns the result to the original Vector2.
 		/// </summary>
-		public static Vector3 ToVector3WithoutZ(this Vector2 vector)
+		public static void DivideThisBy(this ref Vector2 vector, float? x = null, float? y = null)
 		{
-			return new Vector3(vector.x, vector.y, 0);
+			vector = vector.Divide(x, y);
 		}
 
-		#endregion Swap
+		/// <summary>
+		///     Rounds and returns the Vector to the nearest integer according to the specified conditions.
+		///     By default, rounds all the values to the nearest integer.
+		/// </summary>
+		public static Vector2 Round(this Vector2 vector, bool shouldRoundX = true, bool shouldRoundY = true)
+		{
+			return new Vector2(shouldRoundX ? Mathf.Round(vector.x) : vector.x,
+				shouldRoundY ? Mathf.Round(vector.y) : vector.y);
+		}
+
+		/// <summary>
+		///     Rounds the Vector to the nearest integer according to the specified conditions.
+		///     By default, rounds all the values to the nearest integer.
+		/// </summary>
+		public static void RoundThis(this ref Vector2 vector, bool shouldRoundX = true, bool shouldRoundY = true)
+		{
+			vector = vector.Round(shouldRoundX, shouldRoundY);
+		}
+
+		/// <summary>
+		///     Clamps and returns the Vector to the specified min and max values.
+		/// </summary>
+		public static Vector2 Clamp(this Vector2 vector, float min, float max)
+		{
+			return new Vector2(
+				Mathf.Clamp(vector.x, min, max),
+				Mathf.Clamp(vector.y, min, max));
+		}
+
+		/// <summary>
+		///     Clamps the Vector to the specified min and max values and assigns the result to the original Vector2.
+		/// </summary>
+		public static void ClampThis(this ref Vector2 vector, float min, float max)
+		{
+			vector = vector.Clamp(min, max);
+		}
+
+		/// <summary>
+		///     Clamps the x value to the specified min and max values and returns the result.
+		/// </summary>
+		public static Vector2 ClampX(this Vector2 vector, float min, float max)
+		{
+			return new Vector2(vector.x, Mathf.Clamp(vector.y, min, max));
+		}
+
+		/// <summary>
+		///     Clamps the x value to the specified min and max values and assigns the result to the original Vector2.
+		/// </summary>
+		public static void ClampThisX(this ref Vector2 vector, float min, float max)
+		{
+			vector = vector.ClampX(min, max);
+		}
+
+		/// <summary>
+		///     Clamps the y value to the specified min and max values and returns the result.
+		/// </summary>
+		public static Vector2 ClampY(this Vector2 vector, float min, float max)
+		{
+			return new Vector2(vector.x, Mathf.Clamp(vector.y, min, max));
+		}
+
+		/// <summary>
+		///     Clamps the y value to the specified min and max values and assigns the result to the original Vector2.
+		/// </summary>
+		public static void ClampThisY(this ref Vector2 vector, float min, float max)
+		{
+			vector = vector.ClampY(min, max);
+		}
+
+
+		/// <summary>
+		///     Lerps the x value of the vector and returns the result
+		/// </summary>
+		public static Vector2 LerpX(this Vector2 vector, float x, float t)
+		{
+			return vector.With(Mathf.Lerp(vector.x, x, t));
+		}
+
+		/// <summary>
+		///     Lerps the x value of the vector and assigns the result to the original vector
+		/// </summary>
+		public static void LerpThisX(this ref Vector2 vector, float x, float t)
+		{
+			vector = vector.LerpX(x, t);
+		}
+
+		/// <summary>
+		///     Lerps the y value of the vector and returns the result
+		/// </summary>
+		public static Vector2 LerpY(this Vector2 vector, float y, float t)
+		{
+			return vector.With(y: Mathf.Lerp(vector.y, y, t));
+		}
+
+		/// <summary>
+		///     Lerps the y value of the vector and assigns the result to the original vector
+		/// </summary>
+		public static void LerpThisY(this ref Vector2 vector, float y, float t)
+		{
+			vector = vector.LerpY(y, t);
+		}
+
+		#endregion Math Operations
 
 		#region Conversion
 
 		/// <summary>
-		/// Converts the vector 2 to a vector 3 with a y value of 0.
+		///     Converts the vector 2 to a vector 3 with a y value of 0.
 		/// </summary>
 		public static Vector3 ToVector3WithoutY(this Vector2 vector)
 		{
-			return new Vector3(vector.x, 0 ,vector.y);
+			return new Vector3(vector.x, 0, vector.y);
 		}
-		 
+
 		/// <summary>
-		/// Converts the vector 2 to a vector 3 with a x value of 0.
+		///     Converts the vector 2 to a vector 3 with a x value of 0.
 		/// </summary>
 		public static Vector3 ToVector3WithoutX(this Vector2 vector)
 		{
 			return new Vector3(0, vector.x, vector.y);
 		}
 
-		#endregion
-		
-		// TODO: all extensions here(Except With region) => assign the result to the original vector 
+		/// <summary>
+		///     Converts the vector 2 to a vector 3 with a z value of 0.
+		/// </summary>
+		public static Vector3 ToVector3WithoutZ(this Vector2 vector)
+		{
+			return new Vector3(vector.x, vector.y, 0);
+		}
+
+		#endregion Conversion
 	}
 }
