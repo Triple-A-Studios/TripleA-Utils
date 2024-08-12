@@ -1,7 +1,6 @@
-﻿using Unity.VisualScripting;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Utils.Singletons
+namespace TripleA.Singletons
 {
 	public class RegulatorSingleton<T> : MonoBehaviour where T : MonoBehaviour
 	{
@@ -40,14 +39,12 @@ namespace Utils.Singletons
 			InitializationTime = Time.time;
 			DontDestroyOnLoad(gameObject);
 
-			T[] otherInstances = FindObjectsByType<T>(FindObjectsSortMode.None);
+			var otherInstances = FindObjectsByType<T>(FindObjectsSortMode.None);
 
-			foreach (T other in otherInstances)
-			{
-				if (other.GetComponent<RegulatorSingleton<T>>().InitializationTime <= this.InitializationTime)
-					Destroy(other.GameObject());
-			}
-			
+			foreach (var other in otherInstances)
+				if (other.GetComponent<RegulatorSingleton<T>>().InitializationTime <= InitializationTime)
+					Destroy(other.gameObject);
+
 			if (instance == null)
 				instance = this as T;
 		}
