@@ -30,15 +30,15 @@ namespace TripleA.Extensions
 		/// <summary>
 		///     Adds the specified x, y, and z values to the original vector and returns the result.
 		/// </summary>
-		public static Vector3 Add(this Vector3 vector, float? x = null, float? y = null, float? z = null)
+		public static Vector3 Add(this Vector3 vector, float x = 0, float y = 0, float z = 0)
 		{
-			return new Vector3(vector.x + (x ?? 0), vector.y + (y ?? 0), vector.z + (z ?? 0));
+			return new Vector3(vector.x + x, vector.y + y, vector.z + z);
 		}
 
 		/// <summary>
 		///     Adds the specified x, y, and z values to the original vector and assigns the result to the original vector.
 		/// </summary>
-		public static void AddToThis(this ref Vector3 vector, float? x = null, float? y = null, float? z = null)
+		public static void AddToThis(this ref Vector3 vector, float x = 0, float y = 0, float z = 0)
 		{
 			vector = vector.Add(x, y, z);
 		}
@@ -46,15 +46,15 @@ namespace TripleA.Extensions
 		/// <summary>
 		///     Subtracts the specified x, y, and z values from the original vector and returns the result.
 		/// </summary>
-		public static Vector3 Subtract(this Vector3 vector, float? x = null, float? y = null, float? z = null)
+		public static Vector3 Subtract(this Vector3 vector, float x = 0, float y = 0, float z = 0)
 		{
-			return new Vector3(vector.x - (x ?? 0), vector.y - (y ?? 0), vector.z - (z ?? 0));
+			return new Vector3(vector.x - x, vector.y - y, vector.z - z);
 		}
 
 		/// <summary>
 		///     Subtracts the specified x, y, and z values from the original vector and assigns the result to the original vector.
 		/// </summary>
-		public static void SubtractFromThis(this ref Vector3 vector, float? x = null, float? y = null, float? z = null)
+		public static void SubtractFromThis(this ref Vector3 vector, float x = 0, float y = 0, float z = 0)
 		{
 			vector = vector.Subtract(x, y, z);
 		}
@@ -62,15 +62,15 @@ namespace TripleA.Extensions
 		/// <summary>
 		///     Multiplies the specified x, y, and z values by the original vector and returns the result.
 		/// </summary>
-		public static Vector3 Multiply(this Vector3 vector, float? x = null, float? y = null, float? z = null)
+		public static Vector3 Multiply(this Vector3 vector, float x = 1, float y = 1, float z = 1)
 		{
-			return new Vector3(vector.x * (x ?? 1), vector.y * (y ?? 1), vector.z * (z ?? 1));
+			return new Vector3(vector.x * x, vector.y * y, vector.z * z);
 		}
 
 		/// <summary>
 		///     Multiplies the specified x, y, and z values by the original vector and assigns the result to the original vector.
 		/// </summary>
-		public static void MultiplyThisBy(this ref Vector3 vector, float? x = null, float? y = null, float? z = null)
+		public static void MultiplyThisBy(this ref Vector3 vector, float x = 1, float y = 1, float z = 1)
 		{
 			vector = vector.Multiply(x, y, z);
 		}
@@ -78,17 +78,43 @@ namespace TripleA.Extensions
 		/// <summary>
 		///     Divides the specified x, y, and z values by the original vector and returns the result.
 		/// </summary>
-		public static Vector3 Divide(this Vector3 vector, float? x = null, float? y = null, float? z = null)
+		public static Vector3 Divide(this Vector3 vector, float x = 1, float y = 1, float z = 1)
 		{
-			return new Vector3(vector.x / (x ?? 1), vector.y / (y ?? 1), vector.z / (z ?? 1));
+			return new Vector3(vector.x / x, vector.y / y, vector.z / z);
 		}
 
 		/// <summary>
 		///     Divides the specified x, y, and z values by the original vector and assigns the result to the original vector.
 		/// </summary>
-		public static void DivideThisBy(this ref Vector3 vector, float? x = null, float? y = null, float? z = null)
+		public static void DivideThisBy(this ref Vector3 vector, float x = 1, float y = 1, float z = 1)
 		{
 			vector = vector.Divide(x, y, z);
+		}
+
+		/// <summary>
+		///     Divides two Vector3 objects component-wise.
+		/// </summary>
+		/// <remarks>
+		///     For each component in v0 (x, y, z), it is divided by the corresponding component in v1 if the component in v1 is
+		///     not zero.
+		///     Otherwise, the component in v0 remains unchanged.
+		/// </remarks>
+		/// <example>
+		///     Use 'ComponentDivide' to scale a game object proportionally:
+		///     <code>
+		///  myObject.transform.localScale = originalScale.ComponentDivide(targetDimensions);
+		///  </code>
+		///     This scales the object size to fit within the target dimensions while maintaining its original proportions.
+		/// </example>
+		/// <param name="v0">The Vector3 object that this method extends.</param>
+		/// <param name="v1">The Vector3 object by which v0 is divided.</param>
+		/// <returns>A new Vector3 object resulting from the component-wise division.</returns>
+		public static Vector3 ComponentDivide(this Vector3 v0, Vector3 v1)
+		{
+			return new Vector3(
+				v1.x != 0 ? v0.x / v1.x : v0.x,
+				v1.y != 0 ? v0.y / v1.y : v0.y,
+				v1.z != 0 ? v0.z / v1.z : v0.z);
 		}
 
 		/// <summary>
@@ -312,4 +338,5 @@ namespace TripleA.Extensions
 
 		#endregion Swap
 	}
+	//TODO: like component divide, component multiply, component add, component subtract; also for vector2
 }

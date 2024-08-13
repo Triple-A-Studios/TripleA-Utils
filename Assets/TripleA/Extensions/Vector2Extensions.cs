@@ -50,15 +50,15 @@ namespace TripleA.Extensions
 		/// <summary>
 		///     Adds and returns the specified x and y values to the original Vector2.
 		/// </summary>
-		public static Vector2 Add(this Vector2 vector, float? x = null, float? y = null)
+		public static Vector2 Add(this Vector2 vector, float x = 0, float y = 0)
 		{
-			return new Vector2(vector.x + (x ?? 0), vector.y + (y ?? 0));
+			return new Vector2(vector.x + x, vector.y + y);
 		}
 
 		/// <summary>
 		///     Adds the specified x and y values to the original Vector2 and assigns the result to the original Vector2.
 		/// </summary>
-		public static void AddToThis(this ref Vector2 vector, float? x = null, float? y = null)
+		public static void AddToThis(this ref Vector2 vector, float x = 0, float y = 0)
 		{
 			vector = vector.Add(x, y);
 		}
@@ -66,15 +66,15 @@ namespace TripleA.Extensions
 		/// <summary>
 		///     Subtracts and returns the specified x and y values to the original Vector2.
 		/// </summary>
-		public static Vector2 Subtract(this Vector2 vector, float? x = null, float? y = null)
+		public static Vector2 Subtract(this Vector2 vector, float x = 0, float y = 0)
 		{
-			return new Vector2(vector.x - (x ?? 0), vector.y - (y ?? 0));
+			return new Vector2(vector.x - x, vector.y - y);
 		}
 
 		/// <summary>
 		///     Subtracts the specified x and y values to the original Vector2 and assigns the result to the original Vector2.
 		/// </summary>
-		public static void SubtractFromThis(this ref Vector2 vector, float? x = null, float? y = null)
+		public static void SubtractFromThis(this ref Vector2 vector, float x = 0, float y = 0)
 		{
 			vector = vector.Subtract(x, y);
 		}
@@ -82,15 +82,15 @@ namespace TripleA.Extensions
 		/// <summary>
 		///     Multiplies and returns the specified x and y values to the original Vector2.
 		/// </summary>
-		public static Vector2 Multiply(this Vector2 vector, float? x = null, float? y = null)
+		public static Vector2 Multiply(this Vector2 vector, float x = 1, float y = 1)
 		{
-			return new Vector2(vector.x * (x ?? 1), vector.y * (y ?? 1));
+			return new Vector2(vector.x * x, vector.y * y);
 		}
 
 		/// <summary>
 		///     Multiplies the specified x and y values to the original Vector2 and assigns the result to the original Vector2.
 		/// </summary>
-		public static void MultiplyThisBy(this ref Vector2 vector, float? x = null, float? y = null)
+		public static void MultiplyThisBy(this ref Vector2 vector, float x = 1, float y = 1)
 		{
 			vector = vector.Multiply(x, y);
 		}
@@ -98,15 +98,15 @@ namespace TripleA.Extensions
 		/// <summary>
 		///     Divides and returns the specified x and y values to the original Vector2.
 		/// </summary>
-		public static Vector2 Divide(this Vector2 vector, float? x = null, float? y = null)
+		public static Vector2 Divide(this Vector2 vector, float x = 1, float y = 1)
 		{
-			return new Vector2(vector.x / (x ?? 1), vector.y / (y ?? 1));
+			return new Vector2(vector.x / x, vector.y / y);
 		}
 
 		/// <summary>
 		///     Divides the specified x and y values to the original Vector2 and assigns the result to the original Vector2.
 		/// </summary>
-		public static void DivideThisBy(this ref Vector2 vector, float? x = null, float? y = null)
+		public static void DivideThisBy(this ref Vector2 vector, float x = 1, float y = 1)
 		{
 			vector = vector.Divide(x, y);
 		}
