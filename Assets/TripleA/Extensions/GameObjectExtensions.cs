@@ -61,5 +61,5 @@ namespace TripleA.Extensions
 		}
 	}
 
-	//TODO ListExtensions, MathfExtensions, NumberExtensions, TransformExtensions
+	//TODO: MathfExtensions, NumberExtensions, TransformExtensions
 }
