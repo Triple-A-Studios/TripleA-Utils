@@ -60,6 +60,4 @@ namespace TripleA.Extensions
 			foreach (Transform child in gameObject.transform) child.gameObject.SetLayerRecursively(layerMask);
 		}
 	}
-
-	//TODO: TransformExtensions
 }
