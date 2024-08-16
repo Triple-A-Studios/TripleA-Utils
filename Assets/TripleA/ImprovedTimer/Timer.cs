@@ -54,14 +54,14 @@ namespace TripleA.ImprovedTimer
 			IsRunning = true;
 		}
 
-		public void Reset()
+		public virtual void Reset()
 		{
 			CurrentTime = _initialTime;
 			IsRunning = false;
 			IsFinished = false;
 		}
 
-		public void Reset(float value)
+		public virtual void Reset(float value)
 		{
 			_initialTime = value;
 			Reset();
