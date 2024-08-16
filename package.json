@@ -1,0 +1,17 @@
+{
+  "name": "com.TripleAStudios.Utils",
+  "description": "Essential Custom Utilities I use for my Unity Projects",
+  "version": "1.0.0",
+  "displayName": "Utils",
+  "unity": "2021.3",
+  "documentationUrl": "https://github.com/Triple-A-Studios/Utils.git",
+  "changelogUrl": "https://github.com/Triple-A-Studios/Utils.git",
+  "licenseUrl": "https://github.com/Triple-A-Studios/Utils.git",
+  "dependencies": {},
+  "keywords": ["utilities", "essentials", "utils"],
+  "author": {
+    "name": "Triple-A-Studios",
+    "email": "ali.qadir.007@outlook.com",
+    "url": "https://github.com/Triple-A-Studios"
+  }
+}
