@@ -18,6 +18,16 @@ namespace TripleA.Extensions
 		}
 
 		/// <summary>
+		///     Refreshes the list with the given items
+		/// </summary>
+		/// <param name="items">The items to add</param>
+		public static void RefreshWith<T>(this List<T> list, IEnumerable<T> items)
+		{
+			list.Clear();
+			list.AddRange(items);
+		}
+
+		/// <summary>
 		///     Shuffles the list using Fisher-Yates algorithm.
 		///     Reference: http://en.wikipedia.org/wiki/Fisher-Yates_shuffle
 		/// </summary>
