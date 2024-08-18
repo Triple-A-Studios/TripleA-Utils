@@ -6,21 +6,37 @@ namespace TripleA.ImprovedTimer
 	public abstract class Timer : IDisposable
 	{
 		protected float _initialTime;
+		protected float _tickUpdateThreshold;
+		protected float _tickUpdateTime;
 
 		private bool m_disposed;
 
+		public Action<float> onTimerUpdate = delegate { };
 		public Action onTimerEnd = delegate { };
 		public Action onTimerStart = delegate { };
 
-		public Timer(float value)
+		public Timer(float initialTime, float? digitsAfterDecimal = null)
 		{
-			_initialTime = value;
+			_initialTime = initialTime;
+			CalculateTickUpdateThreshold(digitsAfterDecimal);
+		}
+
+		private void CalculateTickUpdateThreshold(float? tickUpdateThreshold = null)
+		{
+			if (tickUpdateThreshold == null) _tickUpdateThreshold = 0;
+			else
+			{
+				float power = -1 * (float)tickUpdateThreshold;
+				_tickUpdateThreshold = Mathf.Pow(10, power);
+			}
 		}
 
 		public float CurrentTime { get; protected set; }
 		public bool IsRunning { get; private set; }
 
-		public float Progress => Mathf.Clamp01(CurrentTime / _initialTime);
+		public abstract float Progress();
+
+
 		public abstract bool IsFinished { get; protected set; }
 
 		// call this to ensure deregistration of the timer
@@ -77,7 +93,7 @@ namespace TripleA.ImprovedTimer
 
 		/// <summary>
 		///     Disposes of the timer.
-		/// </summary
+		/// </summary>
 		public virtual void Dispose(bool isDisposing)
 		{
 			if (m_disposed) return;

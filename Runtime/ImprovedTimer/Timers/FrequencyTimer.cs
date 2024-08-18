@@ -11,7 +11,12 @@ namespace TripleA.ImprovedTimer.Timers
 		private float m_timeThreshold;
 		public Action onTick = delegate { };
 
-		public FrequencyTimer(int ticksPerSecond) : base(0)
+		/// <summary>
+		///     Initializes a new instance of the <see cref="FrequencyTimer" /> class.
+		/// </summary>
+		/// <param name="ticksPerSecond">The number of ticks per second.</param>
+		/// <param name="digitsAfterDecimal">The number of digits after the decimal point to get an update of tick.</param>
+		public FrequencyTimer(int ticksPerSecond, float? digitsAfterDecimal = null) : base(0, digitsAfterDecimal)
 		{
 			CalculateTimeThreshold(ticksPerSecond);
 		}
@@ -22,19 +27,32 @@ namespace TripleA.ImprovedTimer.Timers
 
 		public override void Tick()
 		{
+			
+			if (IsRunning && CurrentTime < m_timeThreshold)
+			{
+				_tickUpdateTime += Time.deltaTime;
+				CurrentTime += Time.deltaTime;
+			}
 			if (IsRunning && CurrentTime >= m_timeThreshold)
 			{
 				CurrentTime -= m_timeThreshold;
 				onTick.Invoke();
 			}
-
-			if (IsRunning && CurrentTime < m_timeThreshold) CurrentTime += Time.deltaTime;
+			
+			if (IsRunning && _tickUpdateTime >= _tickUpdateThreshold)
+			{
+				_tickUpdateTime -= _tickUpdateThreshold;
+				onTimerUpdate?.Invoke(this.CurrentTime);
+			}
 		}
 
 		public override void Reset()
 		{
+			base.Reset();
 			CurrentTime = 0;
 		}
+
+		public override float Progress() => 1.0f;
 
 		public void Reset(int newTicksPerSecond)
 		{
