@@ -4,27 +4,27 @@ namespace TripleA.Singletons
 {
 	public class GenericSingleton<T> : MonoBehaviour where T : MonoBehaviour
 	{
-		protected static T instance;
-		public static bool HasInstance => instance != null;
+		protected static T _s_instance;
+		public static bool HasInstance => _s_instance != null;
 
 		public static T Instance
 		{
 			get
 			{
-				if (instance == null)
+				if (_s_instance == null)
 				{
-					instance = FindAnyObjectByType<T>();
-					if (instance == null)
+					_s_instance = FindAnyObjectByType<T>();
+					if (_s_instance == null)
 					{
 						var obj = new GameObject
 						{
 							name = typeof(T).Name + " Auto-Instantiated"
 						};
-						instance = obj.AddComponent<T>();
+						_s_instance = obj.AddComponent<T>();
 					}
 				}
 
-				return instance;
+				return _s_instance;
 			}
 		}
 
@@ -35,15 +35,15 @@ namespace TripleA.Singletons
 
 		public static T TryGetInstance()
 		{
-			return HasInstance ? instance : null;
+			return HasInstance ? _s_instance : null;
 		}
 
 		protected virtual void InstantiateSingleton()
 		{
 			if (!Application.isPlaying) return;
 
-			if (instance == null)
-				instance = this as T;
+			if (_s_instance == null)
+				_s_instance = this as T;
 			else
 				Destroy(gameObject);
 		}

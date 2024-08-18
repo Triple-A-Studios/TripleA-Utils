@@ -4,8 +4,8 @@ namespace TripleA.Singletons
 {
 	public class RegulatorSingleton<T> : MonoBehaviour where T : MonoBehaviour
 	{
-		protected static T instance;
-		public static bool HasInstance => instance != null;
+		protected static T _s_instance;
+		public static bool HasInstance => _s_instance != null;
 
 		public float InitializationTime { get; private set; }
 
@@ -13,18 +13,18 @@ namespace TripleA.Singletons
 		{
 			get
 			{
-				if (instance == null)
+				if (_s_instance == null)
 				{
-					instance = FindAnyObjectByType<T>();
-					if (instance == null)
+					_s_instance = FindAnyObjectByType<T>();
+					if (_s_instance == null)
 					{
 						var go = new GameObject(typeof(T).Name + " Auto-Generated");
 						go.hideFlags = HideFlags.HideAndDontSave;
-						instance = go.AddComponent<T>();
+						_s_instance = go.AddComponent<T>();
 					}
 				}
 
-				return instance;
+				return _s_instance;
 			}
 		}
 
@@ -45,8 +45,8 @@ namespace TripleA.Singletons
 				if (other.GetComponent<RegulatorSingleton<T>>().InitializationTime <= InitializationTime)
 					Destroy(other.gameObject);
 
-			if (instance == null)
-				instance = this as T;
+			if (_s_instance == null)
+				_s_instance = this as T;
 		}
 	}
 }

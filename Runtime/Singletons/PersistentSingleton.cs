@@ -1,21 +1,22 @@
 ﻿using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace TripleA.Singletons
 {
 	public class PersistentSingleton<T> : GenericSingleton<T> where T : MonoBehaviour
 	{
-		public bool AutoUnparentOnAwake = true;
+		 public bool autoUnparentOnAwake = true;
 
 		protected override void InstantiateSingleton()
 		{
 			if (!Application.isPlaying) return;
 
-			if (AutoUnparentOnAwake)
+			if (autoUnparentOnAwake)
 				transform.SetParent(null);
 
-			if (instance == null)
+			if (_s_instance == null)
 			{
-				instance = this as T;
+				_s_instance = this as T;
 				DontDestroyOnLoad(gameObject);
 			}
 			else

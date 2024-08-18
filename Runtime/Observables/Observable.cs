@@ -1,66 +1,67 @@
 ﻿using System;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 namespace TripleA.Observables
 {
 	[Serializable]
 	public class Observable<T>
 	{
-		[SerializeField] private T value;
-		[SerializeField] private UnityEvent<T> onValueChanged;
+		[SerializeField] private T m_value;
+		[SerializeField] private UnityEvent<T> m_onValueChanged;
 
 		public Observable(T value, UnityAction<T> callback = null)
 		{
-			this.value = value;
-			onValueChanged = new UnityEvent<T>();
-			if (callback != null) onValueChanged.AddListener(callback);
+			this.m_value = value;
+			m_onValueChanged = new UnityEvent<T>();
+			if (callback != null) m_onValueChanged.AddListener(callback);
 		}
 
 		public T Value
 		{
-			get => value;
+			get => m_value;
 			set => Set(value);
 		}
 
 		public void AddListener(UnityAction<T> callback)
 		{
 			if (callback == null) return;
-			if (onValueChanged == null) onValueChanged = new UnityEvent<T>();
-			onValueChanged.AddListener(callback);
+			if (m_onValueChanged == null) m_onValueChanged = new UnityEvent<T>();
+			m_onValueChanged.AddListener(callback);
 		}
 
 		public void RemoveListener(UnityAction<T> callback)
 		{
 			if (callback == null) return;
-			if (onValueChanged == null) return;
+			if (m_onValueChanged == null) return;
 
-			onValueChanged.RemoveListener(callback);
+			m_onValueChanged.RemoveListener(callback);
 		}
 
 		public void RemoveAllListeners()
 		{
-			if (onValueChanged == null) return;
-			onValueChanged.RemoveAllListeners();
+			if (m_onValueChanged == null) return;
+			m_onValueChanged.RemoveAllListeners();
 		}
 
 		public void Dispose()
 		{
 			RemoveAllListeners();
-			onValueChanged = null;
-			value = default;
+			m_onValueChanged = null;
+			m_value = default;
 		}
 
 		public void Set(T newValue)
 		{
-			if (Equals(value, newValue)) return;
-			value = newValue;
+			if (Equals(m_value, newValue)) return;
+			m_value = newValue;
 			Invoke();
 		}
 
 		public void Invoke()
 		{
-			onValueChanged.Invoke(value);
+			m_onValueChanged.Invoke(m_value);
 		}
 	}
 }
