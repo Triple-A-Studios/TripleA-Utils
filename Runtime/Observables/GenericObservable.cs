@@ -1,7 +1,6 @@
 ﻿using System;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.Serialization;
 
 namespace TripleA.Observables
 {
@@ -13,7 +12,7 @@ namespace TripleA.Observables
 
 		public Observable(T value, UnityAction<T> callback = null)
 		{
-			this.m_value = value;
+			m_value = value;
 			m_onValueChanged = new UnityEvent<T>();
 			if (callback != null) m_onValueChanged.AddListener(callback);
 		}
