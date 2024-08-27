@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Utils.TripleA.Extensions
+namespace TripleA.Extensions
 {
 	public class Vector3Math
 	{

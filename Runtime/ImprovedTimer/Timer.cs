@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Utils.TripleA.ImprovedTimer
+namespace TripleA.ImprovedTimer
 {
 	public abstract class Timer : IDisposable
 	{

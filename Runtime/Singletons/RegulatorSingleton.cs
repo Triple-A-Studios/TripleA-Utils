@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Utils.TripleA.Singletons
+namespace TripleA.Singletons
 {
 	public class RegulatorSingleton<T> : MonoBehaviour where T : MonoBehaviour
 	{

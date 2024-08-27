@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Utils.TripleA.Observables
+namespace TripleA.Observables
 {
 	[Serializable]
 	public class Observable<T>

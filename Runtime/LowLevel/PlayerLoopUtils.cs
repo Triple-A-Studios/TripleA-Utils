@@ -3,7 +3,7 @@ using System.Text;
 using UnityEngine;
 using UnityEngine.LowLevel;
 
-namespace Utils.TripleA.LowLevel
+namespace TripleA.LowLevel
 {
 	public static class PlayerLoopUtils
 	{

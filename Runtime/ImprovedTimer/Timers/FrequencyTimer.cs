@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Utils.TripleA.ImprovedTimer.Timers
+namespace TripleA.ImprovedTimer.Timers
 {
 	/// <summary>
 	///     A timer that ticks at a specified number of ticks per second.

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using Utils.TripleA.Extensions;
+using TripleA.Extensions;
 
-namespace Utils.TripleA.ImprovedTimer
+namespace TripleA.ImprovedTimer
 {
 	public static class TimerManager
 	{

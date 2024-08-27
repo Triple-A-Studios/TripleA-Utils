@@ -1,6 +1,6 @@
 {
     "name": "com.TripleAStudios.Utils",
-    "rootNamespace": "Utils",
+    "rootNamespace": "TripleA",
     "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],

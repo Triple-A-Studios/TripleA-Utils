@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Collections.Specialized;
 
-namespace Utils.TripleA.Observables.Collections
+namespace TripleA.Observables.Collections
 {
 	public class ObservableStack<T> : Stack<T>, INotifyCollectionChanged
 	{

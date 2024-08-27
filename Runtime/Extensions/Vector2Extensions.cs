@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Utils.TripleA.Extensions
+namespace TripleA.Extensions
 {
 	public static class Vector2Extensions
 	{
@@ -38,7 +38,7 @@ namespace Utils.TripleA.Extensions
 		/// <summary>
 		///     Sets the x and y values of the original Vector2.
 		/// </summary>
-		public static void SetThis(this ref Vector2 vector, float? x = null, float? y = null)
+		public static void Set(this ref Vector2 vector, float? x = null, float? y = null)
 		{
 			vector = vector.With(x, y);
 		}
