@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace TripleA.Singletons
+namespace Utils.TripleA.Singletons
 {
 	public class GenericSingleton<T> : MonoBehaviour where T : MonoBehaviour
 	{

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TripleA.Extensions
+namespace Utils.TripleA.Extensions
 {
 	public static class StringExtensions
 	{

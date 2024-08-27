@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace TripleA.ImprovedTimer.Timers
+namespace Utils.TripleA.ImprovedTimer.Timers
 {
 	/// <summary>
 	///     A timer that counts down from a specified value to 0.

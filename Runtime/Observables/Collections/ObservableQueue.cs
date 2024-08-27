@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Collections.Specialized;
 
-namespace TripleA.Observables.Collections
+namespace Utils.TripleA.Observables.Collections
 {
 	public class ObservableQueue<T> : Queue<T>, INotifyCollectionChanged
 	{

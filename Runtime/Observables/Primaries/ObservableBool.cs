@@ -1,6 +1,6 @@
 ﻿using UnityEngine.Events;
 
-namespace TripleA.Observables.Primaries
+namespace Utils.TripleA.Observables.Primaries
 {
 	[System.Serializable]
 	public class ObservableBool : Observable<bool>

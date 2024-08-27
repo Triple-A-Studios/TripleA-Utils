@@ -1,4 +1,4 @@
-﻿namespace TripleA.Extensions
+﻿namespace Utils.TripleA.Extensions
 {
 	public static class MathfExtension
 	{

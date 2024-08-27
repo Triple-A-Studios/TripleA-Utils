@@ -1,10 +1,10 @@
-﻿using TripleA.LowLevel;
+﻿using Utils.TripleA.LowLevel;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.LowLevel;
 using UnityEngine.PlayerLoop;
 
-namespace TripleA.ImprovedTimer
+namespace Utils.TripleA.ImprovedTimer
 {
 	internal static class TimerBootstrapper
 	{

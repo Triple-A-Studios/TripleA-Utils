@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace TripleA.ImprovedTimer.Timers
+namespace Utils.TripleA.ImprovedTimer.Timers
 {
 	/// <summary>
 	///     Timer that counts up from zero to infinity.  Great for measuring durations.

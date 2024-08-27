@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
-using UnityEngine.Serialization;
 
-namespace TripleA.Singletons
+namespace Utils.TripleA.Singletons
 {
 	public class PersistentSingleton<T> : GenericSingleton<T> where T : MonoBehaviour
 	{

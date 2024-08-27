@@ -2,7 +2,7 @@
 using UnityEngine.Events;
 using UnityEngine.Serialization;
 
-namespace TripleA.EventSystem
+namespace Utils.TripleA.EventSystem
 {
 	public abstract class EventListener<T> : MonoBehaviour
 	{
