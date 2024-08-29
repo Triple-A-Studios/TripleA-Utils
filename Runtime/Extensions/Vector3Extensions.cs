@@ -18,7 +18,7 @@ namespace TripleA.Extensions
 		/// <summary>
 		///     Assigns the specified x, y, and z values to the original vector.
 		/// </summary>
-		public static void Set(this ref Vector3 vector, float? x = null, float? y = null, float? z = null)
+		public static void SetThis(this ref Vector3 vector, float? x = null, float? y = null, float? z = null)
 		{
 			vector = new Vector3(x ?? vector.x, y ?? vector.y, z ?? vector.z);
 		}
