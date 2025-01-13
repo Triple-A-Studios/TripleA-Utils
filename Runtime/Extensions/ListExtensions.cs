@@ -5,7 +5,7 @@ namespace TripleA.Extensions
 {
 	public static class ListExtensions
 	{
-		private static Random _rand;
+		private static Random m_s_rand;
 
 		/// <summary>
 		///     Clones the list
@@ -34,12 +34,12 @@ namespace TripleA.Extensions
 		/// <returns>The shuffled list</returns>
 		public static IList<T> Shuffle<T>(this IList<T> list)
 		{
-			_rand ??= new Random();
+			m_s_rand ??= new Random();
 			var n = list.Count;
 			while (n > 1)
 			{
 				n--;
-				var k = _rand.Next(n + 1);
+				var k = m_s_rand.Next(n + 1);
 				(list[k], list[n]) = (list[n], list[k]);
 			}
 

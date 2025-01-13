@@ -1,3 +1,12 @@
+## [1.2.0] - 2025-01-13
+
+### Add New Extension Methods
+
+#### Add:
+- Color Extenstion Methods ```SetThis(), With(), WithAlpha(), SetThisThis()```.
+- Math Extension Method for Double ```Approximately()``` to check if a double is close to another double.
+- Enumerable Extension Method ```CountEnumerable()``` to count the number of elements in an enumerable collection. 
+
 ## [1.1.2] - 2024-10-14
 
 ### Add Transform Extension Method
