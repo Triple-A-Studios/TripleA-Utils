@@ -39,13 +39,13 @@ ___
 
 ## Issues
 
-No known issues as of 20 Aug 2024.
+No known issues as of 16 Mar 2025.
 
 ___
 
 ## Future updates
 
-Upcoming updates (as of 20 Aug 2024): 
+Upcoming updates (as of 13 Jan 2025): 
 - Create a Subsystem in player loop to manage data binding to the timers to reduce unnecessary overhead created by 
 actions to update time ticks.
 

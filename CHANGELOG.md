@@ -1,3 +1,15 @@
+## [2.0.0] - 2025-03-16
+
+### Moved Features to new Packages, Added New Extension Methods
+
+#### Removed:
+Removed Event System and Timers from this package and moved them to the following packages:
+- Event System -> moved [here](https://github.com/Triple-A-Studios/TripleA-EventSystems).
+- Timers -> moved [here](https://github.com/Triple-A-Studios/TripleA-ImprovedTimers).
+
+#### Added:
+- Prefab Extension Method ```IsUninstantiatedPrefab()```.
+
 ## [1.2.0] - 2025-01-13
 
 ### Add New Extension Methods
