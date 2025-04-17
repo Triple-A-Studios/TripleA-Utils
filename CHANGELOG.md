@@ -1,3 +1,12 @@
+## [2.0.0] - 2025-04-17
+
+### Changes in namespace
+
+#### Changed:
+- Namespace Updates from `TripleA.Extensions` to `TripleA.Utils.Extensions`
+- Namespace Updates from `TripleA.Observables` to `TripleA.Utils.Observables`
+- Namespace Updates from `TripleA.Singletons` to `TripleA.Utils.Singletons`
+
 ## [2.0.0] - 2025-03-16
 
 ### Moved Features to new Packages, Added New Extension Methods

@@ -1,6 +1,6 @@
 ﻿using UnityEngine.Events;
 
-namespace TripleA.Observables.Primaries
+namespace TripleA.Utils.Observables.Primaries
 {
 	[System.Serializable]
 	public class ObservableFloat : Observable<float>

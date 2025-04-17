@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 
-namespace TripleA.Extensions
+namespace TripleA.Utils.Extensions
 {
 	public static class EnumerableExtensions
 	{

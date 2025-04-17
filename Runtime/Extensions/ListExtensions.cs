@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace TripleA.Extensions
+namespace TripleA.Utils.Extensions
 {
 	public static class ListExtensions
 	{

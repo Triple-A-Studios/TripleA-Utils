@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace TripleA.Extensions
+namespace TripleA.Utils.Extensions
 {
 	public class Vector2Math
 	{

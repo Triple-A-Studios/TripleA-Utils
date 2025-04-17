@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace TripleA.Extensions
+namespace TripleA.Utils.Extensions
 {
 	public static class MathExtensions
 	{
